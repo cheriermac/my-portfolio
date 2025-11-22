@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cherry Ermac - Organized. Strategic. Impactful.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #1a1a1a;
+            --primary-white: #ffffff;
+            --accent-color: #00bcd4; /* Electric Blue / Teal */
+            --light-grey: #f5f5f5;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--primary-white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-black);
+            margin-bottom: 0.5em;
+        }
+
+        h1 { font-size: 3.5em; font-weight: 900; line-height: 1.1; }
+        h2 { font-size: 2.8em; font-weight: 700; }
+        h3 { font-size: 1.8em; font-weight: 700; }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-white);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #00a4b8;
+            transform: translateY(-3px);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-black);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 900;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--primary-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://image.example.com/cherry-ermac-hero-bg.jpg') center/cover no-repeat; /* Placeholder for a potential background image */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--primary-white);
+            padding-top: 80px; /* Offset for fixed nav */
+        }
+
+        #hero .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        #hero .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-color);
+            object-fit: cover;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0, 189, 212, 0.5);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        #hero h1 {
+            color: var(--primary-white);
+            font-size: 4.5em;
+            animation: slideInUp 1s ease-out forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+            margin-bottom: 10px;
+        }
+
+        #hero .subheadline {
+            font-size: 1.8em;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: var(--light-grey);
+            animation: slideInUp 1s ease-out forwards;
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        #hero .btn {
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        /* About Me Section */
+        #about {
+            background-color: var(--light-grey);
+            padding: 100px 0;
+        }
+
+        #about .container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        #about .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        #about .about-image img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        #about .about-content {
+            flex: 2;
+        }
+
+        #about h2 {
+            color: var(--primary-black);
+            margin-bottom: 25px;
+        }
+
+        #about p {
+            font-size: 1.1em;
+            margin-bottom: 1.5em;
+            color: var(--text-color);
+        }
+
+        /* Services Section */
+        #services {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        #services h2 {
+            margin-bottom: 60px;
+            color: var(--primary-black);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background-color: var(--primary-white);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 189, 212, 0.15);
+        }
+
+        .service-card .icon {
+            font-size: 3.5em;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: var(--primary-black);
+        }
+
+        .service-card p {
+            font-size: 1em;
+            color: var(--text-color);
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        #portfolio h2 {
+            color: var(--primary-white);
+            margin-bottom: 60px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 189, 212, 0.25);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-card-content {
+            padding: 25px;
+        }
+
+        .project-card h3 {
+            color: var(--accent-color);
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 0.95em;
+            color: #ccc;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            padding: 100px 0;
+            text-align: center;
+            background-color: var(--light-grey);
+        }
+
+        #testimonials h2 {
+            margin-bottom: 60px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--primary-white);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--accent-color);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .testimonial-card .author {
+            font-weight: 700;
+            color: var(--primary-black);
+            font-size: 1.05em;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            text-align: center;
+            background-color: var(--primary-white);
+        }
+
+        #contact h2 {
+            margin-bottom: 60px;
+        }
+
+        #contact .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-black);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: 'Open Sans', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 189, 212, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        #contact .btn {
+            width: 100%;
+            max-width: 250px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-black);
+            color: var(--light-grey);
+            padding: 50px 0;
+            text-align: center;
+            border-top: 5px solid var(--accent-color);
+        }
+
+        footer p {
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .social-links a {
+            color: var(--primary-white);
+            font-size: 1.8em;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            #about .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #about .about-image {
+                margin-bottom: 40px;
+            }
+
+            #about .about-image img {
+                max-width: 300px;
+            }
+
+            nav ul {
+                display: none; /* Hide for smaller screens, could implement a hamburger menu */
+            }
+
+            .logo {
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3em; }
+            h2 { font-size: 2.2em; }
+            h3 { font-size: 1.5em; }
+
+            #hero {
+                height: auto;
+                min-height: 80vh;
+                padding: 120px 0 60px;
+            }
+
+            #hero h1 {
+                font-size: 3.2em;
+            }
+
+            #hero .subheadline {
+                font-size: 1.4em;
+            }
+
+            .service-grid, .portfolio-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card, .project-card, .testimonial-card {
+                padding: 30px;
+            }
+
+            .form-group input, .form-group textarea, .btn {
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            #hero h1 { font-size: 2.5em; }
+            #hero .subheadline { font-size: 1.2em; }
+            .logo { font-size: 1.5em; }
+        }
+
+        /* Font Awesome for Icons */
+        .fa {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">CHERRY ERMAC</a>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container hero-content">
+            <img src="https://image.example.com/cherry-ermac-hero.jpg" alt="Cherry Ermac" class="hero-image"> 
+            <h1>Organized. Strategic. Impactful.</h1>
+            <p class="subheadline">Workforce Coordination • Admin Support • Branding</p>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-image">
+                <img src="https://image.example.com/cherry-ermac-about.jpg" alt="Cherry Ermac Professional"> 
+                </div>
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>Hello! I'm Cherry Ermac, a dedicated and highly organized professional with a passion for creating seamless operations and impactful communications. With a strong foundation in workforce coordination, administrative support, and branding, I thrive on bringing clarity and efficiency to every project.</p>
+                <p>My approach is rooted in strategic thinking and meticulous execution. I love transforming complex challenges into streamlined solutions, empowering teams, and ensuring that every detail aligns with the bigger picture. When I'm not optimizing workflows or crafting compelling messages, you can find me exploring new creative outlets or planning my next big adventure!</p>
+                <a href="#portfolio" class="btn">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>My Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <i class="fas fa-users icon"></i>
+                    <h3>Workforce Coordination</h3>
+                    <p>Optimizing team schedules, managing assignments, and ensuring seamless collaboration to maximize productivity and achieve organizational goals.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tools icon"></i>
+                    <h3>Admin Support & Operations</h3>
+                    <p>Delivering comprehensive administrative assistance, managing daily operations, and implementing efficient systems to support business functions.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-lightbulb icon"></i>
+                    <h3>Branding & Communication Support</h3>
+                    <p>Crafting compelling brand narratives, developing communication strategies, and producing engaging content to enhance your presence and message.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2>My Work Samples</h2>
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <img src="https://image.example.com/project-newsletter.jpg" alt="Newsletter Design">
+                    <div class="project-card-content">
+                        <h3>Engaging Newsletter Design</h3>
+                        <p>Developed and designed a series of internal and external newsletters, improving communication flow and engagement.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://image.example.com/project-branding.jpg" alt="Brand Guidelines">
+                    <div class="project-card-content">
+                        <h3>Comprehensive Brand Assets</h3>
+                        <p>Created detailed brand guidelines and a suite of visual assets to ensure consistent and strong brand representation.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://image.example.com/project-crm.jpg" alt="CRM Setup">
+                    <div class="project-card-content">
+                        <h3>Communication Tools Setup</h3>
+                        <p>Implemented and configured CRM systems and other communication platforms to streamline client interactions and internal processes.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://image.example.com/project-website.jpg" alt="Website Update">
+                    <div class="project-card-content">
+                        <h3>Website Content Management</h3>
+                        <p>Managed content updates and optimizations for company websites, ensuring accuracy, relevance, and a positive user experience.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://image.example.com/project-report.jpg" alt="Report Generation">
+                    <div class="project-card-content">
+                        <h3>Executive Report Generation</h3>
+                        <p>Provided critical administrative support by compiling, formatting, and distributing executive reports with precision and punctuality.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://image.example.com/project-event.jpg" alt="Event Coordination">
+                    <div class="project-card-content">
+                        <h3>Virtual Event Coordination</h3>
+                        <p>Successfully coordinated and managed logistics for several large-scale virtual events, ensuring smooth execution and attendee satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <img src="https://image.example.com/client1.jpg" alt="Client Headshot 1">
+                    <p>"Cherry's organizational skills are unparalleled. She brought so much clarity and efficiency to our administrative processes. A true asset!"</p>
+                    <span class="author">- Jane Doe, CEO of Tech Innovations</span>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://image.example.com/client2.jpg" alt="Client Headshot 2">
+                    <p>"Her strategic approach to workforce coordination transformed our team's productivity. Highly recommend Cherry for any operational role."</p>
+                    <span class="author">- John Smith, Operations Director at Global Connect</span>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://image.example.com/client3.jpg" alt="Client Headshot 3">
+                    <p>"Cherry's branding support was instrumental in refining our company's voice. She's creative, insightful, and incredibly professional."</p>
+                    <span class="author">- Emily White, Marketing Manager at Creative Solutions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Tell me about your project or inquiry..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Cherry Ermac. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation for sections (can be expanded with a library like AOS)
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const options = {
+                root: null,
+                threshold: 0.2,
+                rootMargin: "0px"
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    } else {
+                        // Optional: Reset style if element goes out of view
+                        // entry.target.style.opacity = '0';
+                        // entry.target.style.transform = 'translateY(50px)';
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px)';
+                section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(section);
+            });
+
+            // Specific animation for hero elements
+            const heroImage = document.querySelector('#hero .hero-image');
+            const heroHeadline = document.querySelector('#hero h1');
+            const heroSubheadline = document.querySelector('#hero .subheadline');
+            const heroButton = document.querySelector('#hero .btn');
+
+            heroImage.style.animation = 'fadeIn 1s ease-out forwards';
+            heroHeadline.style.animation = 'slideInUp 1s ease-out forwards 0.2s';
+            heroSubheadline.style.animation = 'slideInUp 1s ease-out forwards 0.4s';
+            heroButton.style.animation = 'fadeIn 1s ease-out forwards 0.6s';
+        });
+    </script>
+</body>
+</html>
